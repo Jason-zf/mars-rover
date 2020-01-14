@@ -8,22 +8,18 @@ import org.junit.Test;
 public class MarsRoverTest {
 
     private MarsRover marsRover;
+    private Location originalLocation;
 
     @Before
     public void setUp() {
-        Location location = Location.builder()
+        originalLocation = Location.builder()
             .x(0)
             .y(0)
             .build();
-        marsRover = new MarsRover(location, Direction.E);
     }
 
     @Test
     public void should_return_correct_location_when_mars_rover_move_in_x_direction() {
-        Location originalLocation = Location.builder()
-            .x(0)
-            .y(0)
-            .build();
         marsRover = new MarsRover(originalLocation, Direction.E);
         Location location = marsRover.move();
         assertEquals(1, location.getX());
@@ -32,14 +28,23 @@ public class MarsRoverTest {
 
     @Test
     public void should_return_correct_location_when_mars_rover_move_in_y_direction() {
-        Location originalLocation = Location.builder()
-            .x(0)
-            .y(0)
-            .build();
         marsRover = new MarsRover(originalLocation, Direction.N);
         Location location = marsRover.move();
         assertEquals(1, location.getY());
         assertEquals(0, location.getX());
+    }
 
+    @Test
+    public void should_return_correct_direction_when_mars_rover_turn_left() {
+        marsRover = new MarsRover(originalLocation, Direction.N);
+        Direction direction = marsRover.turnLeft();
+        assertEquals(Direction.W, direction);
+    }
+
+    @Test
+    public void should_return_correct_direction_when_mars_rover_turn_right() {
+        marsRover = new MarsRover(originalLocation, Direction.N);
+        Direction direction = marsRover.turnRight();
+        assertEquals(Direction.E,direction);
     }
 }

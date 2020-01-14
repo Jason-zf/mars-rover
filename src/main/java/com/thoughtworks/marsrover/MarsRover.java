@@ -36,4 +36,12 @@ public class MarsRover {
                 throw new RuntimeException("not support direction");
         }
     }
+
+    public Direction turnLeft() {
+        return direction.left();
+    }
+
+    public Direction turnRight() {
+        return direction.right();
+    }
 }
