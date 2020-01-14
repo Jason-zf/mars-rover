@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 以北作为平面坐标系y轴正方向,东作为x轴的正方向
+ */
 @Data
 @Builder
 @NoArgsConstructor
