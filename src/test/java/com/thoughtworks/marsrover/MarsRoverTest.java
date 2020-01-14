@@ -11,11 +11,15 @@ public class MarsRoverTest {
 
     @Before
     public void setUp() {
-        marsRover = MarsRover.builder().build();
+        Location location = Location.builder()
+            .x(0)
+            .y(0)
+            .build();
+        marsRover = new MarsRover(location);
     }
 
     @Test
-    public void mars_rover_can_move() {
-        assertEquals("mars rover move", marsRover.move());
+    public void should_return_correct_location_when_mars_rover_move_in_x_direction() {
+        assertEquals(1, marsRover.move().getX());
     }
 }

@@ -1,12 +1,18 @@
 package com.thoughtworks.marsrover;
 
-import lombok.Builder;
-
-@Builder
 public class MarsRover {
 
-    public String move() {
-        return "mars rover move";
+    private Location location;
+
+    public MarsRover(Location location) {
+        this.location = location;
+    }
+
+    public Location move() {
+        return Location.builder()
+            .x(location.getX() + 1)
+            .y(location.getY())
+            .build();
     }
 
 }
