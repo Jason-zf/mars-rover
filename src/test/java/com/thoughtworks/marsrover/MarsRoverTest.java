@@ -47,4 +47,6 @@ public class MarsRoverTest {
         Direction direction = marsRover.turnRight();
         assertEquals(Direction.E,direction);
     }
+
+
 }

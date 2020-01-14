@@ -1,5 +1,7 @@
 package com.thoughtworks.marsrover;
 
+import java.util.Arrays;
+
 public class MarsRover {
 
     private Location location;
@@ -38,10 +40,14 @@ public class MarsRover {
     }
 
     public Direction turnLeft() {
-        return direction.left();
+        return Arrays.stream(Direction.values()).filter(it -> it.getValue() == (direction.getValue() + 1) % 4)
+            .findFirst()
+            .orElseThrow(RuntimeException::new);
     }
 
     public Direction turnRight() {
-        return direction.right();
+        return Arrays.stream(Direction.values()).filter(it -> it.getValue() == (direction.getValue() + 3) % 4)
+            .findFirst()
+            .orElseThrow(RuntimeException::new);
     }
 }
