@@ -1,7 +1,9 @@
 package com.thoughtworks.marsrover;
 
 import java.util.Arrays;
+import lombok.Getter;
 
+@Getter
 public class MarsRover {
 
     private Location location;
@@ -12,42 +14,48 @@ public class MarsRover {
         this.direction = direction;
     }
 
-    public Location move() {
+    public MarsRover move() {
         switch (direction) {
             case N:
-                return Location.builder()
+                location = Location.builder()
                     .x(location.getX())
                     .y(location.getY() + 1)
                     .build();
+                return this;
             case S:
-                return Location.builder()
+                location = Location.builder()
                     .x(location.getX())
                     .y(location.getY() - 1)
                     .build();
+                return this;
             case W:
-                return Location.builder()
+                location = Location.builder()
                     .x(location.getX() - 1)
                     .y(location.getY())
                     .build();
+                return this;
             case E:
-                return Location.builder()
+                location = Location.builder()
                     .x(location.getX() + 1)
                     .y(location.getY())
                     .build();
+                return this;
             default:
                 throw new RuntimeException("not support direction");
         }
     }
 
-    public Direction turnLeft() {
-        return Arrays.stream(Direction.values()).filter(it -> it.getValue() == (direction.getValue() + 1) % 4)
+    public MarsRover turnLeft() {
+        direction = Arrays.stream(Direction.values()).filter(it -> it.getValue() == (direction.getValue() + 1) % 4)
             .findFirst()
             .orElseThrow(RuntimeException::new);
+        return this;
     }
 
-    public Direction turnRight() {
-        return Arrays.stream(Direction.values()).filter(it -> it.getValue() == (direction.getValue() + 3) % 4)
+    public MarsRover turnRight() {
+        direction = Arrays.stream(Direction.values()).filter(it -> it.getValue() == (direction.getValue() + 3) % 4)
             .findFirst()
             .orElseThrow(RuntimeException::new);
+        return this;
     }
 }
