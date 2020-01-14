@@ -2,8 +2,10 @@ package com.thoughtworks.marsrover;
 
 import java.util.Arrays;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class MarsRover {
 
     private Location location;

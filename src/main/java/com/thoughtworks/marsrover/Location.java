@@ -2,14 +2,16 @@ package com.thoughtworks.marsrover;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * 以北作为平面坐标系y轴正方向,东作为x轴的正方向
  */
-@Data
+@Getter
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location {
