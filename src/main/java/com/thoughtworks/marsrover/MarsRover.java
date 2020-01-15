@@ -60,4 +60,20 @@ public class MarsRover {
             .orElseThrow(RuntimeException::new);
         return this;
     }
+
+    public void execute(Instruct instruct) {
+        switch (instruct) {
+            case L:
+                turnLeft();
+                break;
+            case R:
+                turnRight();
+                break;
+            case M:
+                move();
+                break;
+            default:
+                throw new RuntimeException();
+        }
+    }
 }

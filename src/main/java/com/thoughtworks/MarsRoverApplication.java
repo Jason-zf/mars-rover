@@ -13,7 +13,7 @@ public class MarsRoverApplication {
         List<Instruct> instructs = Arrays.asList(Instruct.R, Instruct.M, Instruct.M, Instruct.R, Instruct.M, Instruct.R);
         MarsRover marsRover = new MarsRover(Location.builder().x(100).y(90).build(), Direction.N);
         System.out.println("Original: " + marsRover);
-        instructs.forEach(instruct -> instruct.execute(marsRover));
+        instructs.forEach(marsRover::execute);
         System.out.println("Current: " + marsRover);
     }
 }
